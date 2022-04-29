@@ -2,9 +2,12 @@ import { useEffect } from "react";
 
 function App() {
   useEffect(() => {
-    setInterval(() => {
+    const intervalId = setInterval(() => {
       console.log("This message will appear after each second");
     }, 1000);
+    return () => {
+      clearInterval(intervalId);
+    };
   }, []);
 
   return <div className="App"></div>;
